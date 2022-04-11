@@ -9,5 +9,6 @@ import cafeMatinal.model.Funcionario;
 @Repository
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 
-
+	boolean existsFuncionarioByAlimento(String alimento);
+	Optional<Funcionario>findByAlimento(String alimento);
 }

@@ -10,9 +10,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 @Getter
 @Setter
-@Entity
 public class Funcionario {
 	@EqualsAndHashCode.Include
 	@Id
@@ -21,4 +21,6 @@ public class Funcionario {
 	private String nome;
 	private String cpf;
 	private String alimento;
+	
+	
 }

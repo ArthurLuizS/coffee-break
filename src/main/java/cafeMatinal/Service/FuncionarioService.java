@@ -14,9 +14,19 @@ public class FuncionarioService {
 	
 	public Funcionario cadastrar(Funcionario funcionario) {
 		Funcionario novoFuncionario = new Funcionario();
-		Long y = jaTem(funcionario);
+		Long y = 0L; //jaTem(funcionario); 
+		if(funcionarioRepository.existsFuncionarioByAlimento(funcionario.getAlimento())) {
+		y =	funcionarioRepository.findByAlimento(funcionario.getAlimento()).get().getId();
+		
+		}
 		if(y == 0L) {
 		novoFuncionario	= funcionarioRepository.save(funcionario);
+		}else {
+			throw new Error("Funcionario: "
+					.concat(funcionarioRepository.getById(y).getNome())
+					.concat(", Já irá levar: ")
+					.concat(funcionarioRepository.getById(y).getAlimento()));
+			
 		}
 		
 		return novoFuncionario;
